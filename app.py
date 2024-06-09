@@ -41,7 +41,7 @@ def predict():
     prediction = model.predict(final_features)
     print(prediction[0])
 
-    return render_template('home.html', prediction_text="Prediction: {}".format(prediction[0]))
+    return render_template('result.html', prediction_text="Churn" if prediction[0] == 1 else "No Churn")
 
 @app.route('/predict_api', methods=['POST'])
 def predict_api():
