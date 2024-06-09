@@ -1,40 +1,45 @@
 <!DOCTYPE html>
-<html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>ML API</title>
+  <title>Customer Churn Prediction</title>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
- <div class="login">
-	<h1>Jaipur's Air Quality Index Index</h1>
-
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-      <input type="text" name="interview_score3" placeholder="Maximum Wind Speed" required="required" /><br>
-    	<input type="text" name="experience" placeholder="Maximum Temperature" required="required" /><br>
-        <input type="text" name="test_score" placeholder="Minimum Temperature" required="required" /><br>
-        <input type="text" name="interview_score5" placeholder="Average Temperature" required="required" /><br>
-        <input type="text" name="interview_score6" placeholder="Average Wind Speed" required="required" /><br>
-
-       
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+  <div class="login">
+    <h1>Customer Churn Prediction</h1>
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+      <input type="text" name="gender" placeholder="Gender (Male/Female)" required="required" /><br>
+      <input type="text" name="senior_citizen" placeholder="Senior Citizen (0/1)" required="required" /><br>
+      <input type="text" name="partner" placeholder="Partner (Yes/No)" required="required" /><br>
+      <input type="text" name="dependents" placeholder="Dependents (Yes/No)" required="required" /><br>
+      <input type="text" name="tenure" placeholder="Tenure (months)" required="required" /><br>
+      <input type="text" name="phone_service" placeholder="Phone Service (Yes/No)" required="required" /><br>
+      <input type="text" name="multiple_lines" placeholder="Multiple Lines (Yes/No/No phone service)" required="required" /><br>
+      <input type="text" name="internet_service" placeholder="Internet Service (DSL/Fiber optic/No)" required="required" /><br>
+      <input type="text" name="online_security" placeholder="Online Security (Yes/No/No internet service)" required="required" /><br>
+      <input type="text" name="online_backup" placeholder="Online Backup (Yes/No/No internet service)" required="required" /><br>
+      <input type="text" name="device_protection" placeholder="Device Protection (Yes/No/No internet service)" required="required" /><br>
+      <input type="text" name="tech_support" placeholder="Tech Support (Yes/No/No internet service)" required="required" /><br>
+      <input type="text" name="streaming_tv" placeholder="Streaming TV (Yes/No/No internet service)" required="required" /><br>
+      <input type="text" name="streaming_movies" placeholder="Streaming Movies (Yes/No/No internet service)" required="required" /><br>
+      <input type="text" name="contract" placeholder="Contract (Month-to-month/One year/Two year)" required="required" /><br>
+      <input type="text" name="paperless_billing" placeholder="Paperless Billing (Yes/No)" required="required" /><br>
+      <input type="text" name="payment_method" placeholder="Payment Method (Electronic check/Mailed check/Bank transfer (automatic)/Credit card (automatic))" required="required" /><br>
+      <input type="text" name="monthly_charges" placeholder="Monthly Charges" required="required" /><br>
+      <input type="text" name="total_charges" placeholder="Total Charges" required="required" /><br>
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
-
-   <br>
-   <br>
-  
-   
- </div>
- {{prediction_text}}
-
+    <br><br>
+  </div>
+  {% if prediction_text %}
+    <h2>{{ prediction_text }}</h2>
+  {% endif %}
 </body>
 </html>
